@@ -2,8 +2,8 @@
 const Car = require('../model/carsModel');
 exports.getCarsByCategory = async (req, res) => {
     try{
-
-        const {category} = req.body;
+        console.log("get car",req)
+        const {category} = req.query;
         if(!category){
             return res.status(400).json({message: "Please enter category name", success: false})
         }
