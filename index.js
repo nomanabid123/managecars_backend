@@ -1,13 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const User = require('./model/userModel')
-const jwt = require('jsonwebtoken')
-const bodyParser = require('body-parser')
+const cors = require('cors')
 const userRouter = require('./router/userRouter')
 const categoriesRouter = require('./router/categoriesRouter')
 const carsRouter = require('./router/carsRouter')
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 mongoose.connect('mongodb://localhost:27017/managecars', {
     useNewUrlParser: true,
