@@ -29,7 +29,7 @@ exports.signup =async (req, res) => {
         token = jwt.sign({
             name,
             email
-        }, "brownfoxjumpsoverthelazydog", {expiresIn: "1h"})
+        }, "brownfoxjumpsoverthelazydog", {expiresIn: "3h"})
 
     } catch (err) {
         if (err) 
@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
             token = jwt.sign({
                 email,
                 password
-            }, "brownfoxjumpsoverthelazydog", {expiresIn: "1h"})
+            }, "brownfoxjumpsoverthelazydog", {expiresIn: "3h"})
 
         } catch (err) {
             if (err) 
