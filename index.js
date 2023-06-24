@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const User = require('./schema/userModel')
-
+const User = require('./model/userModel')
 const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
 const userRouter = require('./router/userRouter')
@@ -9,6 +8,15 @@ const categoriesRouter = require('./router/categoriesRouter')
 const carsRouter = require('./router/carsRouter')
 const app = express()
 app.use(express.json())
+
+mongoose.connect('mongodb://localhost:27017/managecars', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connected to database")
+}).catch((err) => {
+    console.log("error in database connection", err)
+})
 
 app.use('/user', userRouter)
 app.use('/categories', categoriesRouter)

@@ -1,5 +1,4 @@
- const nodemailer = require('nodemailer')
-const generator = require('generate-password');
+const nodemailer = require('nodemailer')
 
  
 
@@ -13,9 +12,9 @@ let transport = nodemailer.createTransport({
 });
 
 
-let password = generator.generate({length: 10, numbers: true});
 
- const sendMail = async (req)=>{
+
+ const sendMail = async (req,password)=>{
 
     const {name,email} = req.body
 
@@ -29,7 +28,6 @@ let password = generator.generate({length: 10, numbers: true});
     if(info){
         console.log("Email sent",info)
     }
-    return password;
  }
 
  module.exports = sendMail;
