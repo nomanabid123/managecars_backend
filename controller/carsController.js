@@ -77,7 +77,7 @@ exports.updateCar = async (req, res) => {
 exports.deleteCar = async (req, res) => {
 
     try{
-        const {_id} = req.body;
+        const {_id} = req.query;
         if(!_id){
             return res.status(400).json({message: "Please enter car id", success: false})
         }
