@@ -66,18 +66,22 @@ exports.updateCar = async (req, res) => {
         } = req.body;
 
         // Check if _id, category, name, model, make, color is empty
-        if (!_id || !category || !name || !model || !make || !color) {
-            // If empty return error
+        if (!_id || !category || !name || !model || !make || !color) { // If empty return error
             return res.status(400).json({message: "Please enter information correctly", success: false})
         }
 
-        await Car.findByIdAndUpdate(_id, {
+        const response = await Car.findByIdAndUpdate(_id, {
             category,
             name,
             model,
             make,
             color
         }, {new: true});
+
+        if (! response) 
+            return res.status(400).json({message: "Car not found", success: false})
+
+        
 
         res.status(200).json({message: "Car updated Successfully", success: true})
 
@@ -101,7 +105,10 @@ exports.deleteCar = async (req, res) => {
             return res.status(400).json({message: "Please enter car id", success: false})
         }
 
-        await Car.findByIdAndDelete(_id); // Find car by id and delete
+        const response = await Car.findByIdAndDelete(_id); // Find car by id and delete
+        if (! response) 
+            return res.status(400).json({message: "Car not found", success: false})
+        
         res.status(200).json({message: "Car deleted Successfully", success: true})
 
     } catch (err) {

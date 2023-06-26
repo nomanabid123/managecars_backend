@@ -34,6 +34,11 @@ exports.updateCategory = async (req, res) => {
         let updateCategory = await Category.findByIdAndUpdate(_id, {
             name
         }, {new: true});
+
+        if (! updateCategory) {
+            return res.status(400).json({message: "Category not found", success: false});
+        }
+
         return res.status(200).json({message: "Category updated Successfully", success: true});
     } catch (err) {
         return res.status(400).json({message: "Category not updated", success: false});
@@ -49,7 +54,11 @@ exports.deleteCategory = async (req, res) => {
         return res.status(400).json({message: "Please enter category id", success: false})
     }
     try {
-        await Category.findByIdAndDelete(_id); // Find category by id and delete
+        const response = await Category.findByIdAndDelete(_id); // Find category by id and delete
+        if (! response) {
+            return res.status(400).json({message: "Category not found", success: false});
+        }
+
         return res.status(200).json({message: "Category deleted Successfully", success: true});
     } catch (err) {
 
