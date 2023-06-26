@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const isAuth = require('../middleware/auth');
-const {createCategory, updateCategory, deleteCategory, getCategories} = require('../controller/categoriesController');
+const { createCategory, updateCategory, deleteCategory, getCategories } = require('../controller/categoriesController');
 
 // Route to create category
 router.post('/create', isAuth, createCategory);

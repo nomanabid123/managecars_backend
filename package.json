@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "lint": "eslint",
+    "start": "nodemon index.js",
+    "format": "npx prettier --write ."
   },
   "author": "noman",
   "license": "ISC",
@@ -20,5 +22,9 @@
     "nodemailer": "^6.9.3",
     "nodemon": "^2.0.22",
     "process": "^0.11.10"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "prettier": "^2.8.8"
   }
 }
